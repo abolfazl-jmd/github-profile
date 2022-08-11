@@ -6,6 +6,7 @@ import Select from "react-select";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getUser } from "../../Services/getUserService";
+import { getUserRepos } from "../../Services/getUserRepos";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -15,6 +16,7 @@ const options = [
 
 const Profile = () => {
   const [user, setUser] = useState(null);
+  const [userRepos, setUserRepos] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const { search } = useLocation();
@@ -23,8 +25,17 @@ const Profile = () => {
   const getUserProfile = async () => {
     try {
       const response = await getUser(username);
-      console.log(response.data);
       setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserRepositories = async () => {
+    try {
+      const response = await getUserRepos(username);
+      console.log(response.data);
+      setUserRepos(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -33,6 +44,7 @@ const Profile = () => {
   // sending ajax call when the component was loaded
   useEffect(() => {
     getUserProfile();
+    getUserRepositories();
   }, [username]);
 
   return (
@@ -100,13 +112,8 @@ const Profile = () => {
             options={options}
           />
         </header>
-        <Repository />
-        <Repository />
-        <Repository />
-        <Repository />
-        <Repository />
-        <Repository />
-        <Repository />
+        {userRepos &&
+          userRepos.map((repo) => <Repository repo={repo} key={repo.id} />)}
       </div>
     </div>
   );
