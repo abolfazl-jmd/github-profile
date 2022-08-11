@@ -1,0 +1,35 @@
+.navbar {
+  padding: 1rem;
+  box-shadow: 0 0 0.2rem 0.1rem #cecece;
+}
+
+.navbar__list {
+  width: 25rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.link {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  .navbar {
+    width: 100%;
+  }
+
+  .link {
+    font-size: 0.9rem;
+  }
+
+  .navbar__list {
+    width: 100%;
+  }
+}

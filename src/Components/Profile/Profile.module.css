@@ -1,0 +1,144 @@
+.wrapper {
+  max-width: 60rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: var(--primary-color-2);
+}
+
+.profile {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+  width: 40rem;
+  max-width: 60rem;
+}
+
+.profile__image {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile__img {
+  width: 5rem;
+  border-radius: 100%;
+}
+
+.profile__details {
+  width: 100%;
+}
+
+.profile__name {
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+}
+
+.profile__username {
+  font-size: 0.7rem;
+  display: inline-block;
+  margin: 0.4rem 0;
+  letter-spacing: 0.1rem;
+}
+
+.profile__bio {
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+}
+
+.profile__stats {
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+}
+
+.profile__stats__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.profile__stats__name,
+.profile__stats__number {
+  font-size: 0.8rem;
+}
+
+.profile__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile__link__icon {
+  font-size: 1.3rem;
+}
+
+.profile__link__address {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.profile__repositories__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile__repositories__header > div {
+  width: 10rem;
+}
+
+@media screen and (max-width: 630px) {
+  .profile {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .profile {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .profile__img {
+    width: 4rem;
+    border-radius: 100%;
+  }
+
+  .profile__name {
+    font-size: 0.9rem;
+  }
+
+  .profile__username {
+    font-size: 0.6rem;
+  }
+
+  .profile__bio {
+    font-size: 0.6rem;
+  }
+
+  .profile__link__icon {
+    font-size: 1.1rem;
+  }
+
+  .profile__stats__name,
+  .profile__stats__number {
+    font-size: 0.6rem;
+  }
+
+  .profile__link__address {
+    font-size: 0.6rem;
+    color: var(--primary-color);
+  }
+
+  .profile__repositories__header > div {
+    width: 7rem;
+  }
+}

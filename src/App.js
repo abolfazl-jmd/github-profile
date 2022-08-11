@@ -1,9 +1,17 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
+import routes from "./Routes/routes";
+import Navigation from "./Components/Navigation/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Learn React</header>
+    <div className={styles.app}>
+      <Navigation />
+      <Routes>
+        {routes.map((route) => (
+          <Route {...route} key={route.id} />
+        ))}
+      </Routes>
     </div>
   );
 }

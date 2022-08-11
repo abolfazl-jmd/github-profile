@@ -1,0 +1,32 @@
+.repository {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 0.4rem;
+  margin: 1rem 0;
+}
+
+.repository__details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.repository__name {
+  font-size: 1.1rem;
+}
+
+.repository__update {
+  font-size: 0.7rem;
+  text-transform: capitalize;
+}
+
+.repository__stars,
+.repository__forks {
+  font-size: 0.9rem;
+  align-self: flex-end;
+  text-transform: capitalize;
+}
