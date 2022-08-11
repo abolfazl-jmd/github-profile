@@ -9,15 +9,19 @@ import { getUser } from "../../Services/getUserService";
 import { getUserRepos } from "../../Services/getUserRepos";
 
 const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
+  { value: "all", label: "All Repos" },
+  { value: "forks", label: "Most Forks" },
+  { value: "stars", label: "Most Stars" },
+  { value: "update", label: "Latest Update" },
 ];
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [userRepos, setUserRepos] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [userReposClone, setUserReposClone] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+
+  console.log(userReposClone);
 
   const { search } = useLocation();
   const username = search.slice(2); // Getting the username only
@@ -34,8 +38,8 @@ const Profile = () => {
   const getUserRepositories = async () => {
     try {
       const response = await getUserRepos(username);
-      console.log(response.data);
       setUserRepos(response.data);
+      setUserReposClone(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -108,7 +112,7 @@ const Profile = () => {
           <h1>User's Repositories</h1>
           <Select
             defaultValue={selectedOption}
-            onChange={setSelectedOption}
+            onChange={sortReposHandler}
             options={options}
           />
         </header>
