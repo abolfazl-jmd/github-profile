@@ -3,7 +3,7 @@
 Implemented a react Github profiles app named github-profiles-v1 that you can search a username and find the information related to that profile, such as nuumber of followers, followings and repositories. You are able to sort the repositories based on stars, forks and latest updates. Aside from these, you can see the top 10 repositories that have gained the highest stars.
 
 Project link:
-https://github-profiles-v1.netlify.app/
+https://github-profile-v2.netlify.app/
 
 ## Screenshots
 
