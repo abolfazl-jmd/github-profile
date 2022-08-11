@@ -1,24 +1,10 @@
 import { MdSearch } from "react-icons/md";
 import { useState } from "react";
 import styles from "./InputComponent.module.css";
-import { useNavigate } from "react-router-dom";
 
-const SearchInput = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
-
+const SearchInput = ({ submitHandler, searchValue, setSearchValue }) => {
   const searchHandler = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(searchValue);
-
-    navigate(`/username?=${searchValue}`);
-
-    // cleaning the input
-    setSearchValue("");
+    setSearchValue(e.target.value.toLowerCase());
   };
 
   return (
@@ -29,7 +15,7 @@ const SearchInput = () => {
           type="text"
           value={searchValue}
           placeholder="Search Github username..."
-          onChange={(e) => searchHandler(e)}
+          onChange={(e) => searchHandler(e, searchValue)}
         />
         <button className={styles.searchBtn}>Search</button>
       </div>
