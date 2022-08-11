@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getUser } from "../../Services/getUserService";
 import { getUserRepos } from "../../Services/getUserRepos";
+import _ from "lodash";
 
 const options = [
   { value: "all", label: "All Repos" },
@@ -21,8 +22,6 @@ const Profile = () => {
   const [userReposClone, setUserReposClone] = useState(null);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  console.log(userReposClone);
-
   const { search } = useLocation();
   const username = search.slice(2); // Getting the username only
 
@@ -31,7 +30,7 @@ const Profile = () => {
       const response = await getUser(username);
       setUser(response.data);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -41,7 +40,38 @@ const Profile = () => {
       setUserRepos(response.data);
       setUserReposClone(response.data);
     } catch (error) {
-      alert(error);
+      console.log(error);
+    }
+  };
+
+  const sortReposHandler = (e) => {
+    const filterType = e.value;
+    switch (filterType) {
+      case "forks": {
+        const filteredRepos = _.orderBy(userRepos, ["forks"], ["asc"]); // Use Lodash to sort array by 'fork'
+
+        setUserRepos(filteredRepos);
+        break;
+      }
+      case "stars": {
+        const filteredRepos = _.orderBy(
+          userRepos,
+          ["stargazers_count"],
+          ["asc"]
+        );
+
+        setUserRepos(filteredRepos);
+        break;
+      }
+      case "update": {
+        const filteredRepos = _.orderBy(userRepos, ["updated_at"], ["desc"]);
+        setUserRepos(filteredRepos);
+        break;
+      }
+
+      default:
+        setUserRepos(userReposClone);
+        break;
     }
   };
 
@@ -110,7 +140,11 @@ const Profile = () => {
       <div className={styles.profile__repositories}>
         <header className={styles.profile__repositories__header}>
           <h1>User's Repositories</h1>
-          <Select defaultValue={selectedOption} onChange="" options={options} />
+          <Select
+            defaultValue={selectedOption}
+            onChange={sortReposHandler}
+            options={options}
+          />
         </header>
         {userRepos &&
           userRepos.map((repo) => <Repository repo={repo} key={repo.id} />)}
