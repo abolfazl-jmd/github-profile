@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getUser } from "../../Services/getUserService";
 import { getUserRepos } from "../../Services/getUserRepos";
+import _ from "lodash";
 
 const options = [
   { value: "all", label: "All Repos" },
@@ -20,8 +21,6 @@ const Profile = () => {
   const [userRepos, setUserRepos] = useState(null);
   const [userReposClone, setUserReposClone] = useState(null);
   const [selectedOption, setSelectedOption] = useState(options[0]);
-
-  console.log(userReposClone);
 
   const { search } = useLocation();
   const username = search.slice(2); // Getting the username only
@@ -42,6 +41,37 @@ const Profile = () => {
       setUserReposClone(response.data);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const sortReposHandler = (e) => {
+    const filterType = e.value;
+    switch (filterType) {
+      case "forks": {
+        const filteredRepos = _.orderBy(userRepos, ["forks"], ["asc"]); // Use Lodash to sort array by 'fork'
+
+        setUserRepos(filteredRepos);
+        break;
+      }
+      case "stars": {
+        const filteredRepos = _.orderBy(
+          userRepos,
+          ["stargazers_count"],
+          ["asc"]
+        );
+
+        setUserRepos(filteredRepos);
+        break;
+      }
+      case "update": {
+        const filteredRepos = _.orderBy(userRepos, ["updated_at"], ["desc"]);
+        setUserRepos(filteredRepos);
+        break;
+      }
+
+      default:
+        setUserRepos(userReposClone);
+        break;
     }
   };
 
