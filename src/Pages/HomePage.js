@@ -10,7 +10,9 @@ const HomePage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    navigate(`/username?=${searchValue}`);
+    if (searchValue) {
+      navigate(`/username?=${searchValue}`);
+    }
 
     // cleaning the input
     setSearchValue("");

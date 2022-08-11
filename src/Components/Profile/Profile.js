@@ -48,7 +48,7 @@ const Profile = () => {
     const filterType = e.value;
     switch (filterType) {
       case "forks": {
-        const filteredRepos = _.orderBy(userRepos, ["forks"], ["asc"]); // Use Lodash to sort array by 'fork'
+        const filteredRepos = _.orderBy(userRepos, ["forks"], ["desc"]); // Use Lodash to sort array by 'fork'
 
         setUserRepos(filteredRepos);
         break;
@@ -57,7 +57,7 @@ const Profile = () => {
         const filteredRepos = _.orderBy(
           userRepos,
           ["stargazers_count"],
-          ["asc"]
+          ["desc"]
         );
 
         setUserRepos(filteredRepos);
