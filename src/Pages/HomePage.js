@@ -17,12 +17,17 @@ const HomePage = () => {
     setSearchValue("");
   };
 
+  const changerHandler = (e) => {
+    return e;
+  };
+
   return (
     <div className={styles.wrapper}>
       <SearchInput
         submitHandler={submitHandler}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        changerHandler={changerHandler}
       />
     </div>
   );

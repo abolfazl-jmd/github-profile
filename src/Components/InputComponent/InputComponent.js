@@ -1,10 +1,15 @@
 import { MdSearch } from "react-icons/md";
-import { useState } from "react";
 import styles from "./InputComponent.module.css";
 
-const SearchInput = ({ submitHandler, searchValue, setSearchValue }) => {
+const SearchInput = ({
+  submitHandler,
+  searchValue,
+  setSearchValue,
+  changerHandler,
+}) => {
   const searchHandler = (e) => {
     setSearchValue(e.target.value.toLowerCase());
+    changerHandler(e.target.value.toLowerCase());
   };
 
   return (
@@ -15,7 +20,7 @@ const SearchInput = ({ submitHandler, searchValue, setSearchValue }) => {
           type="text"
           value={searchValue}
           placeholder="Search Github username..."
-          onChange={(e) => searchHandler(e, searchValue)}
+          onChange={(e) => searchHandler(e)}
         />
         <button className={styles.searchBtn}>Search</button>
       </div>

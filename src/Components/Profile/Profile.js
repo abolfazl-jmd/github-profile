@@ -31,7 +31,7 @@ const Profile = () => {
       const response = await getUser(username);
       setUser(response.data);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -41,7 +41,7 @@ const Profile = () => {
       setUserRepos(response.data);
       setUserReposClone(response.data);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -110,11 +110,7 @@ const Profile = () => {
       <div className={styles.profile__repositories}>
         <header className={styles.profile__repositories__header}>
           <h1>User's Repositories</h1>
-          <Select
-            defaultValue={selectedOption}
-            onChange={sortReposHandler}
-            options={options}
-          />
+          <Select defaultValue={selectedOption} onChange="" options={options} />
         </header>
         {userRepos &&
           userRepos.map((repo) => <Repository repo={repo} key={repo.id} />)}

@@ -7,7 +7,7 @@ const routes = [
   { id: 1, element: <HomePage />, path: "/" },
   { id: 2, element: <NotFoundPage />, path: "*" },
   { id: 3, element: <Profile />, path: "/username" },
-  { id: 4, element: <TopRepositories />, path: "/repositories" },
+  { id: 4, element: <TopRepositories />, path: "/most-popular" },
 ];
 
 export default routes;

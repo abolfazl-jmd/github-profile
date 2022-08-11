@@ -10,7 +10,7 @@ const Navigation = () => {
           <li>Home</li>
         </NavLink>
 
-        <NavLink to="/repositories" className={styles.link}>
+        <NavLink to="/most-popular" className={styles.link}>
           <li>Top Repositories</li>
         </NavLink>
       </ul>
