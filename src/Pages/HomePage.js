@@ -9,12 +9,15 @@ const HomePage = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(searchValue);
 
     navigate(`/username?=${searchValue}`);
 
     // cleaning the input
     setSearchValue("");
+  };
+
+  const changeHandler = (e) => {
+    return e;
   };
 
   return (
@@ -23,6 +26,7 @@ const HomePage = () => {
         submitHandler={submitHandler}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        changeHandler={changeHandler}
       />
     </div>
   );
